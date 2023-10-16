@@ -1,0 +1,32 @@
+JDBC(Java DataBase Connectivity)
+자바에서 데이터 베이스에 접속할 수 있도록 하는 자바 API
+java에서 데이터베이스와 연결을 설정하고 
+SQL 쿼리 실행하여 데이터를 조회,삽입,수정,삭제 가능
+
+주요 사용 클래스와 인터페이스
+  (1) Connention : 데이터베이스와 연결을 나타내는 인터페이스
+                   데이터베이스 연결을 설정하고 관리하는 데 사용
+            DriverManager : 데이터베이스 드라이버를 관리하고 데이터베이스와 연결을 설정하는 데 사용
+  (2) Statement : SQL 쿼리를 실행하는 데 사용되는 인터페이스 /동적 쿼리를 실행할 때 사용
+      preparedStatement : 미리 컴파일 된 SQL 쿼리를 실행하는 데 사용되는 인터페이스
+      쿼리에 매개변수를 전달하기 쉽고 SQL 인젝션 공격 방지
+                                        *인젝션 : 공격자가 신뢰할 수 없는 입력을 프로그램에 주입하도록 하는 공격
+  (3) ResultSet : SQL 쿼리 실행결과를 나타내는 인터페이스
+                   결과집합에서 데이터를 검색하고 처리하는 데 사용
+
+
+
+예제코드
+String driver = "oracle.jdbc.driver.oracledriver";
+String URL = "jdbc:oracle:thin:@;localhost:1521:xe";
+String user = "유저이름";
+String password="비밀번호";
+
+class.forName(driver); -- jdbc 드라이버 클래스를 동적으로 로드하는 데 사용->오래된 방식 필요없음
+Connection con = DriverManager.getConnection(url,user,password);
+
+preparedStatement selectstatement = con.preparedStatement(쿼리변수);
+
+Resultset resultset = selectstatement.executeQuery();
+
+  
