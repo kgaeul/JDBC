@@ -1,0 +1,51 @@
+selectAll
+	주로 여러행을 검색하는 데 사용
+	조건없이 데이터베이스의 모든 데이터를 가져오는 경우
+	where절을 사용해서 일치하는 모든 행을 검색할 때 사용
+	결과는 주로리스트나 배열 컬렉션 형식으로 반환
+	여러 개의 결과를 반환할수 있고 결과가 없을 수 있음.
+
+connection을 사용하여 url, username, password를 연결해준다.
+
+String [select 코드 담을 변수명] = "select 쿼리 작성";
+
+	* "만약에 뷰,테이블을 찾을 수 없습니다" 가 나올 경우
+		1)sql developer 방문하여 워크시트 실행 후 쿼리 문 실행해보기
+		2)commit 안 했는 지 확인 해보기
+
+//jdbcurl IP와 포트번호 SID 가 들어가야함
+
+//DataBase와 Connection 사용해서 연결
+Connention con = DriverManager.getConnection(jdbcurl,유저명,유저비밀번호);
+
+//쿼리의 경우 " " 글자문을 넣기 때문에 String을 사용
+String selectQuery ="SELECT"FROM 테이블 명";
+								//order by 나 where 절 추가 가능
+
+//PreparedStatement 사용해서 sql 쿼리를 실행할 준비
+PreparedStatement ps = con.prepareStatement(selectQuery);
+
+//Resultset executeQuery() 메서드를 호출하여 SQL SELECT 쿼리를 실행하고 그 결과를 Resultset 객체에 저장
+	Resultset 결과 집합을 표현하는 객체
+	Resultset에 담은 결과 집합을 next()를 사용하여 확인
+	
+예제 코드 :
+ 	Resultset result =
+ 	while(result.next()){//로 표기
+ 	}
+ 	Resultset 객체에서 다음 행으로 이동하는 것을 표기한 것
+ 	next() 메서드는 다음 행이 있으면 true를 반환하고 그렇지 않으면 false를 반환
+ 	더 많은 행이 있는 경우 행이 종료될 때 까지 루프를 계속 실행
+ 	
+ 	
+ 	while(result.next()){
+ 	예약어 변수명= result.getInt("DB테이블에서 불러올 행 작성");
+ 	xxx  변수명 =result.getxxx("DB테이블에서 불러올 행 작성");
+ 	int accountID = result.getInt("account_id");
+							값을 추출할 때 예약어에 맞는 값을 넣고 추출
+							
+ 	}catch(){
+ 	try-catch 블록을 사용하여 쿼리 실행 중 발생할 수 있는 예외처리
+	
+	
+ 	}

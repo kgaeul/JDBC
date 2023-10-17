@@ -1,0 +1,21 @@
+(1) String Driver = "oracle.jdbc.driver.oracledriver";
+(2)String url="jdbc:oracle:thin:@localhost:1521:xe";
+(3)String user = "kh";
+(4)String password="kh1234";
+
+(5)Connection con = DriverManager.getConnection(url, user, password);
+
+(7)String selectQuery ="select*from table";
+(8)PreparedStatement selectState = con.prepareStatement(selectQuery);
+(9)ResultSet result = selectState.executeQuery();
+
+(10)while(result.next()) {
+(11)String str = result.getString("str");
+(12)System.out.println(str);}
+			
+
+
+String insertQuery = "INSERT INTO BANK (account_id, account_number, account_name, balance, branch_name, last_transaction_date)"
+					+ "values(?,?,?,?,?,?)";
+			PreparedStatement insertstate = con.prepareStatement(insertQuery);
+			insertstate.setInt(1, 18);
