@@ -7,6 +7,19 @@ SQL 쿼리 실행하여 데이터를 조회,삽입,수정,삭제 가능
   (1) Connention : 데이터베이스와 연결을 나타내는 인터페이스
                    데이터베이스 연결을 설정하고 관리하는 데 사용
             DriverManager : 데이터베이스 드라이버를 관리하고 데이터베이스와 연결을 설정하는 데 사용
+
+            String URL = "jdbc:oracle:thin:@;localhost:1521:xe";
+                  jdbc:oracle:thin: -> JDBC URL의 프로토콜 부분을 나타냄(*프로토콜 : 데이터의 교환 방식을 정의하는 규칙 체계)
+                  oracle JDBC 드라이버가 "thin" 연결 방식을 사용해서 데이터베이스에 연결할 것임을 나타냄
+
+            Connection con = DriverManager.getConnection(url,user,password);
+            @;localhost:1521:xe : 호스트,포트,Oracle 서비스 이름 지정(SID)
+
+Oracle JDBC 드라이버의 연결유형
+1.Thin : 데이터베이스에 연결하기 위해 클라이언트 시스템을 따로 설치할 필요가 없음
+          jdbc:oracle:thin:@<localhost>:<1521>:<SID>
+2.OCI : 데이터베이스에 연결하기 위해 클라이언트 라이브러리를 따로 설치해야함
+          jdbc:oracle:oci:@<TNS_NAME>
   (2) Statement : SQL 쿼리를 실행하는 데 사용되는 인터페이스 /동적 쿼리를 실행할 때 사용
       preparedStatement : 미리 컴파일 된 SQL 쿼리를 실행하는 데 사용되는 인터페이스
       쿼리에 매개변수를 전달하기 쉽고 SQL 인젝션 공격 방지
@@ -14,6 +27,7 @@ SQL 쿼리 실행하여 데이터를 조회,삽입,수정,삭제 가능
   (3) ResultSet : SQL 쿼리 실행결과를 나타내는 인터페이스
                    결과집합에서 데이터를 검색하고 처리하는 데 사용
 
+                    *isBeforeFirst() : resultSet 데이터가 없는 경우를 확인하기 위해 사용
 
 
 예제코드
