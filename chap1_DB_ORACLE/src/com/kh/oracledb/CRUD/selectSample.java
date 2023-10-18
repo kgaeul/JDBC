@@ -1,18 +1,16 @@
-package db;
+package com.kh.oracledb.CRUD;
 
 import java.sql.*;
-public class DBConnection {
+public class selectSample {
 
-	public static void main(String[] args){
-//		selectbank();
+	public static void main(String[] args) throws Exception{
+//		selectALl();
 //		selectKHCAFE();
 //		selectIF();
-	insertBank();
-		
-		
+
 	}
 	
-	public static void selectbank() {
+	public static void selectAll() {
 
 		//1. 드라이버 연결 : Oracle jdbc 드라이버 클래스 이름
 				String driver ="oracle.jdbc.driver.oraleDriver";
@@ -54,7 +52,7 @@ public class DBConnection {
 					e.printStackTrace();
 				}
 	}
-	static void selectKHCAFE() {
+	static void selectONE() {
 		String driver = "oracle.jdbc.driver.oraleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "khcafe";
@@ -209,31 +207,5 @@ public class DBConnection {
 		}
 		
 	}
-	static void insertBank()  {
-		String Driver="oracle.jdbc.driver.oracledriver";
-		String url="jdbc:oracle:thin:@localhost:1521:xe";
-		String user="khbank";
-		String password="kh1234";
 		
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(url, user, password);
-			String insertQuery = "INSERT INTO BANK (account_id, account_number, account_name, balance, branch_name, last_transaction_date)"
-					+ "values(?,?,?,?,?,?)";
-			PreparedStatement insertstate = con.prepareStatement(insertQuery);
-			insertstate.setInt(1, 18);
-			insertstate.setString(2,"1231453514");
-			insertstate.setString(3, "김여름");
-			insertstate.setDouble(4,1000000);
-			insertstate.setString(5,"롯데월드");
-			insertstate.setDate(6,Date.valueOf("2023-12-25"));
-			
-			int rowsInsert =insertstate.executeUpdate();
-			System.out.println(rowsInsert);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
 }
