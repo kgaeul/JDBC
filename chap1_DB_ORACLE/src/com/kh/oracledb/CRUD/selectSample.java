@@ -34,6 +34,7 @@ public class selectSample {
 					//result.next() : result 객체에서 다음 행(row)으로 이동
 					//다음 행이 있으면 true 반환, 그렇지 않으면 false 반환 
 					while(result.next()) {
+						
 												//khbank에 있는 bank 테이블 결과집합에서 account_id를 가져옴
 							int accountID = result.getInt("account_id");
 							String accountName = result.getString("account_Name");

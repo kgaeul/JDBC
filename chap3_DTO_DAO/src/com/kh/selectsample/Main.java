@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception  {
+	 throws Exception  {
 		Main m = new Main();
 //		m.selectAll();
 		m.selectcanner();
@@ -57,16 +57,24 @@ public class Main {
 					System.out.println();
 				}else {
 					
+//					boolean itrue = rs.getInt("user_id")==userid;
+//					if(!itrue) {
+//						if(rs.getString("email")==email) {
+//						System.out.println();
+//						}
+//						
+//					}
 					
 					boolean idtrue=checkid(userid);
 					boolean emailtrue = checkemail(email);
 					
 					if(!idtrue&&emailtrue) {
-						
 							System.out.println("일치하지 않는 아이디입니다.");
-						
+					}else if(idtrue&&!emailtrue){
+						System.out.println("일치하지 않는 이메일입니다.");
 					}else {
 						System.out.println("둘 다 일치하지 않습니다.");
+						
 					}
 				}
 		
