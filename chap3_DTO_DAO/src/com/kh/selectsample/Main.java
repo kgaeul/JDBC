@@ -11,11 +11,10 @@ import java.util.Scanner;
 
 public class Main {
 
-	 throws Exception  {
+	public static void main(String[]args) throws Exception  {
 		Main m = new Main();
 //		m.selectAll();
 		m.selectcanner();
-
 		
 	}
 	
